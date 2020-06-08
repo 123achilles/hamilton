@@ -15,9 +15,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::post('login', 'Api\AuthController@login');
-Route::post('register', 'Api\AuthController@register');
+Route::post('login', 'Api\AuthController@login')->name('login');
+Route::post('register', 'Api\AuthController@register')->name('register');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::group([
+    'middleware' => ['admin'],
+    'namespace' => "Api\Admin",
+    'prefix' => 'admin'
+], function () {
+
+    Route::get('exams', 'ExamController@index');
+    Route::post('exam/store', 'ExamController@store');
+    Route::put('exam/update/{id}', 'ExamController@update');
+    Route::delete('exam/delete/{id}', 'ExamController@delete');
+});
+
+
