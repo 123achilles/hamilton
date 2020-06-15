@@ -8,7 +8,6 @@ use App\Models\Exam;
 
 class ExamService extends BaseService
 {
-
     /**
      * ExamService constructor.
      * @param Exam $exam
@@ -22,6 +21,8 @@ class ExamService extends BaseService
      * @var array
      */
     public $findColumns = ['id', 'title'];
+
+
 
     /**
      * @return mixed

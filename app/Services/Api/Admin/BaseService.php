@@ -38,7 +38,6 @@ class BaseService
         return $this->baseModel->create($data);
     }
 
-
     /**
      * @param $id
      * @param $data
@@ -81,6 +80,7 @@ class BaseService
      * @param null $name
      * @return array|mixed
      */
+
     public function getDataImage($data, $imageNameForData, $blockName = "section", $name = null)
     {
         $image = $data[$imageNameForData];
@@ -89,12 +89,14 @@ class BaseService
         if (!empty($image)) {
             $pathname = strtoupper($blockName)."ImgPath";
             $path = storage_path($pathname::IMAGE_URL);
+
             if (!File::isDirectory($path)) {
                 File::makeDirectory($path, 0777, true, true);
             }
 
             $w = config('app_settings.'.$blockName.'_img_width');
             $h = config('app_settings.'.$blockName.'_img_height');
+
             $dataImage = $this->upload($image, $path, '', $w, '', $h, '', $name);
         }
         return $dataImage;
