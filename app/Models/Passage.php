@@ -11,6 +11,7 @@ class Passage extends BaseModel
      */
     protected $fillable = [
         'section_id',
+        'title',
         'passage',
         'img_url',
         'created_at',
