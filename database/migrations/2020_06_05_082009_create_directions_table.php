@@ -20,6 +20,13 @@ class CreateDirectionsTable extends Migration
             $table->string('direction_img')->nullable();
             $table->timestamps();
         });
+
+        Schema::table('directions', function (Blueprint $table) {
+            $table->foreign('section_id')
+                ->onDelete('cascade')
+                ->references('id')
+                ->on('sections');
+        });
     }
 
     /**

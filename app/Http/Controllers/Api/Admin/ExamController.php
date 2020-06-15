@@ -4,6 +4,10 @@
 namespace App\Http\Controllers\Api\Admin;
 
 
+use App\Models\Exam;
+use App\Models\Passage;
+use App\Models\Question;
+use App\Models\Section;
 use App\Services\Api\Admin\ExamService;
 use Illuminate\Http\Request;
 
@@ -70,6 +74,20 @@ class ExamController extends BaseController
             return response()->json(["error" => "exam not deleted"]);
         }
         return response()->json(["success" => "exam deleted"]);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show($id)
+    {
+        $exam = $this->baseService->find($id);
+        if (!$exam){
+            return response()->json(['error' => "exam not found by id"]);
+        }
+
+        return response()->json($exam);
     }
 
 

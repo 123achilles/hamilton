@@ -12,6 +12,7 @@ class Section extends BaseModel
     protected $fillable = [
         'exam_id',
         'title',
+        'note',
         'time',
         'info',
         'reference_img',
@@ -22,7 +23,7 @@ class Section extends BaseModel
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    protected function exam()
+    public function exam()
     {
         return $this->belongsTo(Exam::class);
     }
@@ -41,14 +42,6 @@ class Section extends BaseModel
     public function directions()
     {
         return $this->hasMany(Direction::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function notes()
-    {
-        return $this->hasMany(Note::class);
     }
 
 }

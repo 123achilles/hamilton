@@ -32,7 +32,13 @@ Route::group([
     Route::get('exams', 'ExamController@index');
     Route::post('exam/store', 'ExamController@store');
     Route::put('exam/update/{id}', 'ExamController@update');
+    Route::get('exam/{id}', 'ExamController@show');
     Route::delete('exam/delete/{id}', 'ExamController@delete');
+
+    Route::post('section/store', 'SectionController@store');
+    Route::put('section/update/{id}', 'SectionController@update');
+    Route::get('section/{id}', 'SectionController@show');
+    Route::delete('section/delete/{id}', 'SectionController@delete');
 });
 
 

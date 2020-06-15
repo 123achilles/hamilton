@@ -20,7 +20,10 @@ class ConstUserRole
     const ADMIN = 'admin';
 }
 
-
+class SectionImgPath
+{
+    const IMAGE_URL = "app" . DIRECTORY_SEPARATOR . "public" . DIRECTORY_SEPARATOR . "images" . DIRECTORY_SEPARATOR . "section" . DIRECTORY_SEPARATOR;
+}
 
 
 

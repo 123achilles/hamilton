@@ -6,6 +6,7 @@ namespace App\Models;
 
 class Exam extends BaseModel
 {
+
     /**
      * @var array
      */
@@ -18,7 +19,7 @@ class Exam extends BaseModel
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    protected function sections()
+    public function sections()
     {
         return $this->hasMany(Section::class);
     }

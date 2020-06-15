@@ -16,6 +16,7 @@ class CreatePassagesTable extends Migration
         Schema::create('passages', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('section_id');
+            $table->string('title')->nullable();
             $table->text('passage')->nullable();
             $table->string('img_url',191)->nullable();
             $table->timestamps();
