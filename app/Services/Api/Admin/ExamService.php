@@ -10,6 +10,20 @@ class ExamService extends BaseService
 {
 
     /**
+     * ExamService constructor.
+     * @param Exam $exam
+     */
+    public function __construct(Exam $exam)
+    {
+        $this->set_model($exam);
+    }
+
+    /**
+     * @var array
+     */
+    public $findColumns = ['id', 'title'];
+
+    /**
      * @return mixed
      */
     public function index()
@@ -17,26 +31,39 @@ class ExamService extends BaseService
         return Exam::paginate(10,['title']);
     }
 
-    public function store($data)
-    {
-        return Exam::create($data);
-    }
-
-    public function update($id, $data)
-    {
-        $exam =  Exam::find($id,['id', 'title']);
-        if (!$exam){
-            return false;
-        }
-        return $exam->update([$data]);
-    }
+//    /**
+//     * @param $data
+//     * @return mixed
+//     */
+//    public function store($data)
+//    {
+//        return Exam::create($data);
+//    }
+//
+//    public function update($id, $data)
+//    {
+//        $exam =  Exam::find($id,['id', 'title']);
+//        if (!$exam){
+//            return false;
+//        }
+//        return $exam->update([$data]);
+//    }
+//
+//    /**
+//     * @param $id
+//     * @return int
+//     */
+//    public function delete($id)
+//    {
+//        return Exam::destroy($id);
+//    }
 
     /**
      * @param $id
-     * @return int
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
      */
-    public function delete($id)
+    public function find($id)
     {
-        return Exam::destroy($id);
+        return Exam::with('sections:id,exam_id,title')->find($id, ['id', 'title']);
     }
 }

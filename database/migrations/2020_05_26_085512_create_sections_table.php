@@ -20,6 +20,7 @@ class CreateSectionsTable extends Migration
             $table->integer('time');
             $table->string('info',191)->nullable();
             $table->string('reference_img', 191)->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
 
