@@ -3,20 +3,20 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
-
-use App\Services\Api\Admin\SectionService;
+use App\Services\Api\Admin\PassageService;
 use Illuminate\Http\Request;
 
-class SectionController extends BaseController
+class PassageController extends BaseController
 {
     /**
-     * SectionController constructor.
-     * @param SectionService $sectionService
+     * PassageController constructor.
+     * @param PassageService $passageService
      */
-    public function __construct(SectionService $sectionService)
+    public function __construct(PassageService $passageService)
     {
-        $this->baseService = $sectionService;
+        $this->baseService = $passageService;
     }
+
 
     /**
      * @param Request $request
@@ -26,15 +26,13 @@ class SectionController extends BaseController
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'time' => 'required|int',
-            'directions' => 'required',
+            'title' => 'required'
         ]);
-        $section = $this->baseService->store($request->all());
-        if (!$section) {
+        $passage = $this->baseService->store($request->all());
+        if (!$passage) {
             return response()->json(['error' => "not created"]);
         }
-        return response()->json($section);
+        return response()->json($passage);
     }
 
     /**
@@ -47,8 +45,6 @@ class SectionController extends BaseController
     {
         $this->validate($request, [
             'title' => 'required',
-            'time' => 'required|int',
-            'directions' => 'required',
         ]);
         $section = $this->baseService->update($id, $request->all());
         if (!$section) {
@@ -56,4 +52,5 @@ class SectionController extends BaseController
         }
         return response()->json(['success' => "updated"]);
     }
+
 }

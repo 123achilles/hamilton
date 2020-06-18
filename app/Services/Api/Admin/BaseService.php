@@ -34,13 +34,10 @@ class BaseService
      * @return mixed
      */
     public function store($data)
-    {$data['exam_id'] = 1;
-        $dataImage = $this->getDataImage($data);
-        if (!empty($dataImage)) {
-            $data['reference_img'] = $dataImage['file_name'];
-        }
+    {
         return $this->baseModel->create($data);
     }
+
 
     /**
      * @param $id
@@ -54,7 +51,7 @@ class BaseService
             $this->findColumns[] = "id";
         }
 
-        $item = $this->baseModel->find($id, $this->findColumns);
+        $item = $this->baseModel->with('choices')->find($id, $this->findColumns);
 
         if (!$item) {
             return false;
@@ -84,21 +81,20 @@ class BaseService
      * @param null $name
      * @return array|mixed
      */
-    public function getDataImage($data, $name = null)
+    public function getDataImage($data, $imageNameForData, $blockName = "section", $name = null)
     {
-        $image = $data['reference_img'];
+        $image = $data[$imageNameForData];
         $dataImage = [];
 
         if (!empty($image)) {
-            $path = storage_path(\SectionImgPath::IMAGE_URL);
+            $pathname = strtoupper($blockName)."ImgPath";
+            $path = storage_path($pathname::IMAGE_URL);
             if (!File::isDirectory($path)) {
                 File::makeDirectory($path, 0777, true, true);
             }
 
-            $w = 300;
-//            $w = config('app_settings.how_work_image_width');
-            $h = 300;
-//            $h = config('app_settings.how_work_image_height');
+            $w = config('app_settings.'.$blockName.'_img_width');
+            $h = config('app_settings.'.$blockName.'_img_height');
             $dataImage = $this->upload($image, $path, '', $w, '', $h, '', $name);
         }
         return $dataImage;

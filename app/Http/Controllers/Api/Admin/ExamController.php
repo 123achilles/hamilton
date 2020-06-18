@@ -63,32 +63,4 @@ class ExamController extends BaseController
         return response()->json(['exam' => "updated"]);
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function delete($id)
-    {
-        $deleted = $this->baseService->delete($id);
-        if (!$deleted) {
-            return response()->json(["error" => "exam not deleted"]);
-        }
-        return response()->json(["success" => "exam deleted"]);
-    }
-
-    /**
-     * @param $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function show($id)
-    {
-        $exam = $this->baseService->find($id);
-        if (!$exam){
-            return response()->json(['error' => "exam not found by id"]);
-        }
-
-        return response()->json($exam);
-    }
-
-
 }

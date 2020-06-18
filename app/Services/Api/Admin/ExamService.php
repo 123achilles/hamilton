@@ -9,6 +9,10 @@ use App\Models\Exam;
 class ExamService extends BaseService
 {
 
+    /**
+     * ExamService constructor.
+     * @param Exam $exam
+     */
     public function __construct(Exam $exam)
     {
         $this->set_model($exam);

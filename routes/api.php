@@ -29,16 +29,30 @@ Route::group([
     'prefix' => 'admin'
 ], function () {
 
+//                  exam block
     Route::get('exams', 'ExamController@index');
     Route::post('exam/store', 'ExamController@store');
     Route::put('exam/update/{id}', 'ExamController@update');
     Route::get('exam/{id}', 'ExamController@show');
     Route::delete('exam/delete/{id}', 'ExamController@delete');
 
+//                section block
     Route::post('section/store', 'SectionController@store');
     Route::put('section/update/{id}', 'SectionController@update');
     Route::get('section/{id}', 'SectionController@show');
     Route::delete('section/delete/{id}', 'SectionController@delete');
+
+//              passage block
+    Route::post('passage/store', 'PassageController@store');
+    Route::post('passage/update/{id}', 'PassageController@update');
+    Route::get('passage/{id}', 'PassageController@show');
+    Route::delete('passage/delete/{id}', 'PassageController@delete');
+
+//              question block
+    Route::post('question/store', 'QuestionController@store');
+    Route::post('question/update/{id}', 'QuestionController@update');
+//    Route::get('question/{id}', 'QuestionController@show');
+    Route::delete('question/delete/{id}', 'QuestionController@delete');
 });
 
 
