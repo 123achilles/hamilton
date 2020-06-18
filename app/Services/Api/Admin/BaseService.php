@@ -81,6 +81,7 @@ class BaseService
      * @param null $name
      * @return array|mixed
      */
+
     public function getDataImage($data, $imageNameForData, $blockName = "section", $name = null)
     {
         $image = $data[$imageNameForData];
@@ -95,6 +96,7 @@ class BaseService
 
             $w = config('app_settings.'.$blockName.'_img_width');
             $h = config('app_settings.'.$blockName.'_img_height');
+
             $dataImage = $this->upload($image, $path, '', $w, '', $h, '', $name);
         }
         return $dataImage;

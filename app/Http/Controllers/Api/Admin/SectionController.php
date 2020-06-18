@@ -30,7 +30,9 @@ class SectionController extends BaseController
             'time' => 'required|int',
             'directions' => 'required',
         ]);
+
         $section = $this->baseService->store($request->all());
+
         if (!$section) {
             return response()->json(['error' => "not created"]);
         }

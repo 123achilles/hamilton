@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use phpDocumentor\Reflection\Types\This;
 
+
 class SectionService extends BaseService
 {
 
@@ -41,6 +42,7 @@ class SectionService extends BaseService
                 $imageName = $this->getDataImage($i, 'direction_img');
                 $i['direction_img'] = $imageName['file_name'];
             }
+
             $d[] = new Direction($i);
         }
         $directions = $section->directions()->saveMany($d);
@@ -64,18 +66,19 @@ class SectionService extends BaseService
         DB::beginTransaction();
         $section = parent::update($id, $data);
         if (!$section) {
+
             DB::rollBack();
             return false;
         }
 
         foreach ($dat as $k => $i) {
-
             if (!empty($i['direction_img'])) {
                 $imageName = $this->getDataImage($i, 'direction_img');
                 $i['direction_img'] = $imageName['file_name'];
             } else {
                 $i['direction_img'] = null;
             }
+
             $d[$k] = $i;
             $d[$k]['section_id'] = $id;
         }
@@ -85,6 +88,7 @@ class SectionService extends BaseService
             return false;
         }
         if (!$section->directions()->insert($d)) {
+
             DB::rollBack();
             return false;
         }
