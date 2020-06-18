@@ -44,13 +44,13 @@ Route::group([
 
 //              passage block
     Route::post('passage/store', 'PassageController@store');
-    Route::post('passage/update/{id}', 'PassageController@update');
+    Route::put('passage/update/{id}', 'PassageController@update');
     Route::get('passage/{id}', 'PassageController@show');
     Route::delete('passage/delete/{id}', 'PassageController@delete');
 
 //              question block
     Route::post('question/store', 'QuestionController@store');
-    Route::post('question/update/{id}', 'QuestionController@update');
+    Route::put('question/update/{id}', 'QuestionController@update');
 //    Route::get('question/{id}', 'QuestionController@show');
     Route::delete('question/delete/{id}', 'QuestionController@delete');
 });
