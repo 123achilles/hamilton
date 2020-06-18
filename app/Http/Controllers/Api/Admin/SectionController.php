@@ -52,12 +52,10 @@ class SectionController extends BaseController
             'time' => 'required|int',
             'directions' => 'required',
         ]);
-
         $section = $this->baseService->update($id, $request->all());
         if (!$section) {
             return response()->json(['error' => "not updated"]);
         }
         return response()->json(['success' => "updated"]);
-
     }
 }

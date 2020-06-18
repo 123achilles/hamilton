@@ -64,6 +64,7 @@ class ExamController extends BaseController
     }
 
 
+
 //    /**
 //     * @param $id
 //     * @return \Illuminate\Http\JsonResponse
@@ -90,7 +91,6 @@ class ExamController extends BaseController
 //
 //        return response()->json($exam);
 //    }
-
 
 
 }

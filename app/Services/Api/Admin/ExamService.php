@@ -8,6 +8,7 @@ use App\Models\Exam;
 
 class ExamService extends BaseService
 {
+
     /**
      * ExamService constructor.
      * @param Exam $exam

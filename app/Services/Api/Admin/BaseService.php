@@ -38,6 +38,7 @@ class BaseService
         return $this->baseModel->create($data);
     }
 
+
     /**
      * @param $id
      * @param $data
@@ -89,7 +90,6 @@ class BaseService
         if (!empty($image)) {
             $pathname = strtoupper($blockName)."ImgPath";
             $path = storage_path($pathname::IMAGE_URL);
-
             if (!File::isDirectory($path)) {
                 File::makeDirectory($path, 0777, true, true);
             }

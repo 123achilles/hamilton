@@ -36,7 +36,6 @@ Route::group([
     Route::get('exam/{id}', 'ExamController@show');
     Route::delete('exam/delete/{id}', 'ExamController@delete');
 
-
 //                section block
     Route::post('section/store', 'SectionController@store');
     Route::put('section/update/{id}', 'SectionController@update');
