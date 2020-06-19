@@ -30,8 +30,8 @@ class AuthController extends Controller
         $response = $http->post('http://localhost/hamilton/public/oauth/token', [
             'form_params' => [
                 'grant_type' => 'password',
-                'client_id' => '2',
-                'client_secret' => 'LIZMeIzqm30YyGoMguEKFwaNOj8KDAuHaaMAjziw',
+                'client_id' => config('auth.passport.password.id'),
+                'client_secret' => config('auth.passport.password.secret'),
                 'username' => $request->email,
                 'password' => $request->password,
                 'scope' => '',
