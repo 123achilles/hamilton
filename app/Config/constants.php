@@ -36,16 +36,6 @@ class QuestionImgPath
 }
 
 
-class PassageImgPath
-{
-    const IMAGE_URL = "app" . DIRECTORY_SEPARATOR . "public" . DIRECTORY_SEPARATOR . "images" . DIRECTORY_SEPARATOR . "passage" . DIRECTORY_SEPARATOR;
-}
-
-class QuestionImgPath
-{
-    const IMAGE_URL = "app" . DIRECTORY_SEPARATOR . "public" . DIRECTORY_SEPARATOR . "images" . DIRECTORY_SEPARATOR . "question" . DIRECTORY_SEPARATOR;
-}
-
 
 
 
