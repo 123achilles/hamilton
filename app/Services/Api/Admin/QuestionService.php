@@ -77,7 +77,7 @@ class QuestionService extends BaseService
                 return false;
             }
         }
-        
+
         DB::commit();
         return true;
     }
@@ -112,5 +112,13 @@ class QuestionService extends BaseService
         }
 
         return $d;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAllQuestions()
+    {
+        return $this->baseModel->count();
     }
 }
