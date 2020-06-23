@@ -28,7 +28,7 @@ Route::group([
     'namespace' => "Api\Admin",
     'prefix' => 'admin'
 ], function () {
-
+    Route::get('/', 'HomeController@index');
 //                  exam block
     Route::get('exams', 'ExamController@index');
     Route::post('exam/store', 'ExamController@store');

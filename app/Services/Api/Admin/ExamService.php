@@ -68,4 +68,12 @@ class ExamService extends BaseService
     {
         return Exam::with('sections:id,exam_id,title')->find($id, ['id', 'title']);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAllExams()
+    {
+        return $this->baseModel->count();
+    }
 }
