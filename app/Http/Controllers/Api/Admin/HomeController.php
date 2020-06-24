@@ -37,7 +37,7 @@ class HomeController extends BaseController
         $countExams = $this->examService->getAllExams();
         $countQuestions = $this->questionService->getAllQuestions();
 
-        return response()->json(['exam count' => $countExams, 'question count' => $countQuestions]);
+        return response()->json(["status" => 200, "data"=>['exam count' => $countExams, 'question count' => $countQuestions]]);
     }
 
 }

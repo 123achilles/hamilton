@@ -30,9 +30,9 @@ class PassageController extends BaseController
         ]);
         $passage = $this->baseService->store($request->all());
         if (!$passage) {
-            return response()->json(['error' => "not created"]);
+            return response()->json(["status" => 502, 'error' => "not created"]);
         }
-        return response()->json($passage);
+        return response()->json(["status" => 200, 'data' => $passage]);
     }
 
     /**
@@ -48,9 +48,9 @@ class PassageController extends BaseController
         ]);
         $section = $this->baseService->update($id, $request->all());
         if (!$section) {
-            return response()->json(['error' => "not updated"]);
+            return response()->json(["status" => 502, 'error' => "not updated"]);
         }
-        return response()->json(['success' => "updated"]);
+        return response()->json(["status" => 200, 'success' => "updated"]);
     }
 
 }
