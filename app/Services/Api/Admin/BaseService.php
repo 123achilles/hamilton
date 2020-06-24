@@ -51,7 +51,7 @@ class BaseService
             $this->findColumns[] = "id";
         }
 
-        $item = $this->baseModel->with('choices')->find($id, $this->findColumns);
+        $item = $this->baseModel->find($id, $this->findColumns);
 
         if (!$item) {
             return false;

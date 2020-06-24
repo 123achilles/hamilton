@@ -61,12 +61,12 @@ class QuestionService extends BaseService
             $questionData['question_img'] = $dataImage['file_name'];
         }
         DB::beginTransaction();
-        $question = parent::update($id, $questionData);
+        $question = parent::update($id, $questionData, 'question');
         if (!$question) {
             DB::rollBack();
             return false;
         }
-
+        $question = $this->baseModel->with('choices')->find($id, $this->findColumns);//TODO nenc anel vor question erku angam chhanem
         $choiceData = $data['choice'];
         $cData = $this->choiceDataUpdate($choiceData);
 
