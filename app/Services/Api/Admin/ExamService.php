@@ -30,7 +30,7 @@ class ExamService extends BaseService
      */
     public function index()
     {
-        return Exam::paginate(10,['title']);
+        return Exam::paginate(10,['id','title']);
     }
 
 //    /**
