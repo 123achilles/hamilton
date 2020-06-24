@@ -25,9 +25,9 @@ class QuestionController extends BaseController
 //        ]);
         $question = $this->baseService->store($request->all());
         if (!$question) {
-            return response()->json(['error' => "not created"]);
+            return response()->json(["status" => 502, 'error' => "not created"]);
         }
-        return response()->json($question);
+        return response()->json(["status" => 200, "data" => $question]);
     }
 
     public function update(Request $request, $id)
@@ -39,8 +39,8 @@ class QuestionController extends BaseController
 //        ]);
         $question = $this->baseService->update($id, $request->all());
         if (!$question) {
-            return response()->json(['error' => "not updated"]);
+            return response()->json(["status" => 502, 'error' => "not updated"]);
         }
-        return response()->json(['success' => "updated"]);
+        return response()->json(["status" => 200, 'success' => "updated"]);
     }
 }

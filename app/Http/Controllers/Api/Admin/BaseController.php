@@ -21,9 +21,9 @@ class BaseController extends Controller
     {
         $deleted = $this->baseService->delete($id);
         if (!$deleted) {
-            return response()->json(["error" => "item not deleted"]);
+            return response()->json(["status" => 502,"error" => "item not deleted"]);
         }
-        return response()->json(["success" => "item deleted"]);
+        return response()->json(["status" => 200, "success" => "item deleted"]);
     }
 
 
@@ -34,11 +34,11 @@ class BaseController extends Controller
     public function show($id)
     {
         $item = $this->baseService->find($id);
-        if (!$item){
+        if (!$item) {
             return response()->json(['error' => "Item not found by id"]);
         }
 
-        return response()->json($item);
+        return response()->json(["status" => 200,  "data" => $item]);
     }
 
 }

@@ -25,7 +25,7 @@ class ExamController extends BaseController
     public function index()
     {
         $items = $this->baseService->index();
-        return response()->json($items);
+        return response()->json(["status" => 200, "data" => $items]);
     }
 
     /**
@@ -40,9 +40,9 @@ class ExamController extends BaseController
         ]);
         $exam = $this->baseService->store($request->all());
         if (!$exam) {
-            return response()->json(['error' => "not created"]);
+            return response()->json(["status" => 502, 'error' => "not created"]);
         }
-        return response()->json($exam);
+        return response()->json(["status" => 200, "data" => $exam]);
     }
 
     /**
@@ -58,9 +58,9 @@ class ExamController extends BaseController
         ]);
         $exam = $this->baseService->update($id, $request->all());
         if (!$exam) {
-            return response()->json(['error' => "not updated"]);
+            return response()->json(["status" => 502, 'error' => "not updated"]);
         }
-        return response()->json(['exam' => "updated"]);
+        return response()->json(["status" => 200, 'exam' => "updated"]);
     }
 
 

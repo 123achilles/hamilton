@@ -50,7 +50,11 @@ class QuestionService extends BaseService
         return $question;
     }
 
-
+    /**
+     * @param $id
+     * @param $data
+     * @return bool
+     */
     public function update($id, $data)
     {
         $questionData = $data['question'];
@@ -61,7 +65,7 @@ class QuestionService extends BaseService
             $questionData['question_img'] = $dataImage['file_name'];
         }
         DB::beginTransaction();
-        $question = parent::update($id, $questionData, 'question');
+        $question = parent::update($id, $questionData);
         if (!$question) {
             DB::rollBack();
             return false;
