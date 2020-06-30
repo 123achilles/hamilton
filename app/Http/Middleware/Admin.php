@@ -20,6 +20,6 @@ class Admin
         if (\auth('api')->check() && \auth('api')->user()->role === \ConstUserRole::ADMIN) {
             return $next($request);
         }
-        return redirect('/');
+        return response()->json(['status' => 404]);
     }
 }
