@@ -14,6 +14,10 @@ use Illuminate\Http\Request;
 class ExamController extends BaseController
 {
 
+    /**
+     * ExamController constructor.
+     * @param ExamService $examService
+     */
     public function __construct(ExamService $examService)
     {
         $this->baseService = $examService;

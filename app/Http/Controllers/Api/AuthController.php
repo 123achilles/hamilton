@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return mixed
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function register(Request $request)
     {
         $this->validate($request, [
@@ -38,7 +43,8 @@ class AuthController extends Controller
             ],
         ]);
 
-        return json_decode((string) $response->getBody(), true);
+        return $response->json(['status' => 200, 'user' => $user, (string) $response->getBody()]);
+//        return json_decode((string) $response->getBody(), true);
 
 //        return response()->json(['token' => $token], 200);
     }
@@ -71,9 +77,25 @@ class AuthController extends Controller
                     'scope' => '',
                 ],
             ]);
+
             return json_decode((string) $response->getBody(), true);
         } else {
             return response()->json(['error' => 'unauthorized'], 401);
         }
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getAuth(Request $request)
+    {
+        $user = $request->user('api');
+        if ($user){
+            return response()->json(['status' => 200, 'user' => $user]);
+        }
+
+        return response()->json(['status' => 500, 'user' => "not user"]);
+    }
+
 }
