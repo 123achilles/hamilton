@@ -102,7 +102,10 @@ class SectionService extends BaseService
      */
     public function changeData($data)
     {
-        $dataImage = $this->getDataImage($data, 'reference_img');
+        $dataImage = '';
+        if (!empty($data['reference_img'])){
+            $dataImage = $this->getDataImage($data, 'reference_img');
+        }
         if (!empty($dataImage)) {
             $data['reference_img'] = $dataImage['file_name'];
         }

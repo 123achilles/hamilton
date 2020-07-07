@@ -84,6 +84,7 @@ class BaseService
 
     public function getDataImage($data, $imageNameForData, $blockName = "section", $name = null)
     {
+
         $image = $data[$imageNameForData];
         $dataImage = [];
 
