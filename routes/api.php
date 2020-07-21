@@ -19,6 +19,7 @@ Route::post('login', 'Api\AuthController@login')->name('login');
 Route::post('register', 'Api\AuthController@register')->name('register');
 Route::middleware('auth:api')->get('exam/{id}', 'Api\ExamController@getExam');
 Route::middleware('auth:api')->get('/exams', 'Api\HomeController@getAllExams');
+Route::middleware('auth:api')->post('/answer/store', 'Api\AnswerController@store');
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
