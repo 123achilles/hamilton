@@ -66,7 +66,7 @@ class ExamService extends BaseService
      */
     public function find($id)
     {
-        return Exam::with('sections:id,exam_id,title')->find($id, ['id', 'title']);
+        return Exam::with('sections:id,exam_id,title,time')->find($id, ['id', 'title']);
     }
 
     /**
