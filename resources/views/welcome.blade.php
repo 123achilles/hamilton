@@ -79,6 +79,9 @@
                 </div>
             @endif
 
+                <img src="{{public_path('storage/images/question/6fcb1ed84f4b56f35e0d0418ca1f7f2a.png')}}" alt=""><br><br>
+                <img src="{{public_path('storage/images/question/6fcb1ed84f4b56f35e0d0418ca1f7f2a.png')}}" alt=""><br>
+
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
@@ -93,6 +96,7 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <img src="{{public_path('storage/images/question/ground.jpg')}}" alt="">
                 </div>
             </div>
         </div>
