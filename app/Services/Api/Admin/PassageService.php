@@ -24,7 +24,10 @@ class PassageService extends BaseService
      */
     public function store($data)
     {
-        $dataImage = $this->getDataImage($data, 'img_url', 'passage');
+        $dataImage = [];
+        if (!empty($data['img_url'])){
+            $dataImage = $this->getDataImage($data, 'img_url', 'passage');
+        }
         if (!empty($dataImage)) {
             $data['img_url'] = $dataImage['file_name'];
         }

@@ -1,17 +1,5 @@
 <div><span>user email--</span><span>{{$user->email}}</span><span> user name-</span><span>{{$user->name}}</span></div>
 
-<div>shfjshdfsdfdhfs</div>
-<img src="{{public_path('storage/images/question/ground.jpg')}}" alt="h2">
-<h2>asdjsajdj</h2>
-<div>dfsdfsdfsd</div>
-<div>
-    fssdfsdf <span>fsdfsdfsf</span>
-</div>
-<img src="{{public_path('storage/images/question/ground.jpg')}}" alt="">
-<div>dsafsdf</div>
-
-<hr>
-<br>
 @foreach($choices as $value)
 
     <div>

@@ -2,6 +2,8 @@
 
 namespace App\Jobs;
 
+use App\Mail\ConfirmUserMail;
+use App\Mail\SendAnswerPdf;
 use App\Models\Choice;
 use App\Models\Question;
 use App\Models\User;
@@ -12,6 +14,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class SendEmailAnswers implements ShouldQueue
 {
@@ -36,6 +39,7 @@ class SendEmailAnswers implements ShouldQueue
     public function handle()
     {
         $fileName = $this->savePDFFile();
+        Mail::to('suro-11-7@mail.ru')->send(new SendAnswerPdf($fileName));
     }
 
     /**
@@ -79,6 +83,5 @@ class SendEmailAnswers implements ShouldQueue
         return $filename;
 //        dd($pdf->save($filename));
 
-        dd(11);
     }
 }
