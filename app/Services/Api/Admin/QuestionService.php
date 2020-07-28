@@ -26,10 +26,16 @@ class QuestionService extends BaseService
      */
     public function store($data)
     {
+        if (empty($data['question'])){
+            return false;
+        }
+        $dataImage = [];
         $questionData = $data['question'];
         unset($data['question']);
 
-        $dataImage = $this->getDataImage($questionData, 'question_img', 'question');
+        if ($questionData['question_img']){
+            $dataImage = $this->getDataImage($questionData, 'question_img', 'question');
+        }
         if (!empty($dataImage)) {
             $questionData['question_img'] = $dataImage['file_name'];
         }
@@ -39,12 +45,13 @@ class QuestionService extends BaseService
             return false;
         }
 
-        $choiceData = $data['choice'];
-        $cData = $this->choiceData($choiceData);
-        $choices = $question->choices()->saveMany($cData);
-
-        if (!$choices) {
-            return false;
+        if (!empty($data['choice'])){
+            $choiceData = $data['choice'];
+            $cData = $this->choiceData($choiceData);
+            $choices = $question->choices()->saveMany($cData);
+            if (!$choices) {
+                return false;
+            }
         }
 
         return $question;
@@ -57,10 +64,15 @@ class QuestionService extends BaseService
      */
     public function update($id, $data)
     {
+        if (empty($data['question'])){
+            return false;
+        }
         $questionData = $data['question'];
         unset($data['question']);
-
-        $dataImage = $this->getDataImage($questionData, 'question_img', 'question');
+        $dataImage = [];
+        if ($questionData['question_img']){
+            $dataImage = $this->getDataImage($questionData, 'question_img', 'question');
+        }
         if (!empty($dataImage)) {
             $questionData['question_img'] = $dataImage['file_name'];
         }
